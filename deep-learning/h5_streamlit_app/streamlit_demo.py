@@ -26,16 +26,16 @@
 
 # -------------------- Chart Widgets -------------------- #
 
-import streamlit as st
-import pandas as pd
-import numpy as np
+# import streamlit as st
+# import pandas as pd
+# import numpy as np
 
-st.header("📈 Displaying Data and Charts")
+# st.header("📈 Displaying Data and Charts")
 
-data = pd.DataFrame(
-    np.random.randn(10, 3),
-    columns=['A', 'B', 'C']
-)
+# data = pd.DataFrame(
+#     np.random.randn(10, 3),
+#     columns=['A', 'B', 'C']
+# )
 
 # st.write("### DataFrame:")
 # st.dataframe(data)
@@ -71,24 +71,46 @@ data = pd.DataFrame(
 
 
 # Import the Streamlit library
-# import streamlit as st
+import streamlit as st
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 # st.title("Streamlit Layout Basics")
 # st.write("This app demonstrates how to use columns, rows, and other layout features in Streamlit.")
 
+
+
+
 #     # --- Using Columns ---
 # st.header("Columns Example")
-# col1, col2, col3 = st.columns(3)
+# col1, col2, col3, col4 = st.columns(4)
+
+# data =  pd.DataFrame( np.random.randn(10, 3), columns=['A', 'B', 'C'] )
 # with col1:
-#     st.subheader("Column 1")
-#     st.write("This is the first column.")
+#     st.subheader("Column 1 chart")
+#     st.line_chart(data)
 # with col2:
-#     st.subheader("Column 2")
-#     st.write("This is the second column.")
+#     st.subheader("Column 2 chart")
+#     st.bar_chart(data)
 # with col3:
-#     st.subheader("Column 3")
-#     st.write("This is the third column.")
+#     st.subheader("Column 3 chart")
+#     # st.write("This is the third column.")
+#     st.area_chart(data)
+# with col4:
+#     st.subheader("Column 4 chart")
+    # st.write("This is the fourth column.")
+    # st.dataframe(data.head())
+    # fig, ax = plt.subplots()
+    # ax.hist(data['B'], bins=10, color='skyblue', edgecolor='black')
+    # st.pyplot(fig)
+    # fig, ax = plt.subplots()
+    # ax.plot([1, 2, 3], [10, 20, 15])
+    # ax.set_title("Simple Line Plot")
+    # ax.set_xlabel("X-axis")
+    # ax.set_ylabel("Y-axis")
+    # st.pyplot(fig)
 
 #     # --- Using Sidebar ---
 # st.sidebar.header("Sidebar Example")
@@ -102,6 +124,8 @@ data = pd.DataFrame(
 #     st.write("This content is inside a container.")
 #     st.line_chart({"data": [1, 3, 2, 4]})
 
+# st.header("this is outside the container")
+
 #     # --- Expander Section ---
 # with st.expander("Click to expand"):
 #     st.write("Here you can hide or show content dynamically.")
@@ -112,4 +136,40 @@ data = pd.DataFrame(
 # with tab1:
 #     st.write("This is content inside Tab 1.")
 # with tab2:
-#     st.write("This is content inside Tab 2.")
+#     st.write("This is content inside Tab 2.")import streamlit as st
+import time
+import pandas as pd
+import numpy as np
+
+st.title("💾 Data Loading Example with st.container()")
+
+# Create an empty container — acts like a placeholder
+placeholder = st.container()
+
+# Show initial message
+placeholder.write("⏳ Loading data, please wait...")
+
+placeholder.write("This is some other content on the page while data is loading.")
+st.write("You can interact with other widgets here.")
+# Simulate a time-consuming task (like fetching from an API or database)
+time.sleep(3)
+
+# Once data is "loaded", replace the placeholder content
+placeholder.empty()  # clears previous content
+
+# Now display the results in the same spot
+data = pd.DataFrame(
+    np.random.randn(10, 3),
+    columns=['A', 'B', 'C']
+)
+placeholder.write("✅ Data loaded successfully!")
+placeholder.dataframe(data)
+
+# Add a chart below
+st.line_chart(data)
+
+# st.header("Using st.expander()")
+
+# with st.expander("See more details"):
+#     st.write("Here’s some hidden content.")
+#     st.bar_chart({"data": [5, 10, 15, 20]})
