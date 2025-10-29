@@ -137,39 +137,49 @@ import matplotlib.pyplot as plt
 #     st.write("This is content inside Tab 1.")
 # with tab2:
 #     st.write("This is content inside Tab 2.")import streamlit as st
-import time
-import pandas as pd
-import numpy as np
+# import time
+# import pandas as pd
+# import numpy as np
 
-st.title("💾 Data Loading Example with st.container()")
+# st.title("💾 Data Loading Example with st.container()")
 
-# Create an empty container — acts like a placeholder
-placeholder = st.container()
+# # Create an empty container — acts like a placeholder
+# placeholder = st.container()
 
-# Show initial message
-placeholder.write("⏳ Loading data, please wait...")
+# # Show initial message
+# placeholder.write("⏳ Loading data, please wait...")
 
-placeholder.write("This is some other content on the page while data is loading.")
-st.write("You can interact with other widgets here.")
-# Simulate a time-consuming task (like fetching from an API or database)
-time.sleep(3)
+# placeholder.write("This is some other content on the page while data is loading.")
+# st.write("You can interact with other widgets here.")
+# # Simulate a time-consuming task (like fetching from an API or database)
+# time.sleep(3)
 
-# Once data is "loaded", replace the placeholder content
-placeholder.empty()  # clears previous content
+# # Once data is "loaded", replace the placeholder content
+# placeholder.empty()  # clears previous content
 
-# Now display the results in the same spot
-data = pd.DataFrame(
-    np.random.randn(10, 3),
-    columns=['A', 'B', 'C']
-)
-placeholder.write("✅ Data loaded successfully!")
-placeholder.dataframe(data)
+# # Now display the results in the same spot
+# data = pd.DataFrame(
+#     np.random.randn(10, 3),
+#     columns=['A', 'B', 'C']
+# )
+# placeholder.write("✅ Data loaded successfully!")
+# placeholder.dataframe(data)
 
-# Add a chart below
-st.line_chart(data)
+# # Add a chart below
+# st.line_chart(data)
 
 # st.header("Using st.expander()")
 
 # with st.expander("See more details"):
 #     st.write("Here’s some hidden content.")
 #     st.bar_chart({"data": [5, 10, 15, 20]})
+
+
+import streamlit as st
+
+st.header('st.button')
+
+if st.button('Say hello'):
+     st.write('Why hello there')
+else:
+     st.write('Goodbye')
